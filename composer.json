@@ -1,0 +1,24 @@
+{
+    "name": "fishlab/wechat-sdk-php",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "wu",
+            "email": "wu@fishlab.org"
+        }
+    ],
+    "require": {
+
+    },
+    "autoload":{
+        "psr-4":{
+            "Wechat\\":"src/Wechat"
+        }
+    },
+    "autoload-dev":{
+        "psr-4": {
+            "Tests\\": "tests"
+        }
+    }
+
+}
