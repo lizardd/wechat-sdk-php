@@ -78,10 +78,10 @@ class WechatMicroPayment extends WechatPaymentSupport
 		}
 		
 		//④、次确认失败，则撤销订单
-	//	if(!$this->cancel($out_trade_no))
-	//	{
-	//		throw new \WxpayException("cancel_order_failure");
-	//	}
+		if(!$this->cancel($out_trade_no))
+		{
+			throw new \WxpayException("cancel_order_failure");
+		}
 		throw new \Exception("wait_pay_time_out");
 
 //		return false;
@@ -148,9 +148,8 @@ class WechatMicroPayment extends WechatPaymentSupport
 		if($result["return_code"] != "SUCCESS"){
 			return false;
 		}
-		
 		//如果结果为success且不需要重新调用撤销，则表示撤销成功
-		if($result["result_code"] != "SUCCESS" 
+		if($result["result_code"] == "SUCCESS"
 			&& $result["recall"] == "N"){
 			return true;
 		} else if($result["recall"] == "Y") {
