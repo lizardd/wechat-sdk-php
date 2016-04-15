@@ -1,10 +1,10 @@
-﻿<?php
+<?php
 namespace Wechat\Payment;
 
 require_once __DIR__."/lib/WxPay.Api.php";
 require_once __DIR__."/lib/WxPay.Data.php";
 require_once __DIR__."/lib/WxPay.Exception.php";
- 
+
 /**
  * 
  * 刷卡支付实现类
@@ -118,7 +118,7 @@ class WechatMicroPayment extends WechatPaymentSupport
 		}
 		
 		//如果返回错误码为“此交易订单号不存在”则直接认定失败
-		if($result["err_code"] == "ORDERNOTEXIST")
+		if(array_key_exists('err_code',$result)&&$result["err_code"] == "ORDERNOTEXIST")
 		{
 			$succCode = 0;
 		} else{
