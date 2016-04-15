@@ -72,7 +72,12 @@ class WechatMicroPayment extends WechatPaymentSupport
 			} else if($succResult == 1){//查询成功
 				return $queryResult;
 			} else {//订单交易失败
-				return false;
+				if(!$this->cancel($out_trade_no))//失败也撤销订单
+				{
+					throw new \WxpayException("cancel_order_failure");
+				}
+				throw new \WxpayException("order_pay_failure");
+				//return false;
 			}
 
 		}
