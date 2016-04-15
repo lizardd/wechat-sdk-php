@@ -4,7 +4,7 @@ namespace Wechat\Payment;
 require_once __DIR__."/lib/WxPay.Api.php";
 require_once __DIR__."/lib/WxPay.Data.php";
 require_once __DIR__."/lib/WxPay.Exception.php";
-
+ 
 /**
  * 
  * 刷卡支付实现类
