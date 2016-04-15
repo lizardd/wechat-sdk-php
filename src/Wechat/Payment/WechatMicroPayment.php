@@ -115,6 +115,22 @@ class WechatMicroPayment extends WechatPaymentSupport
 				$succCode = 2;
 				return false;
 			}
+			//PAYERROR--支付失败(其他原因，如银行返回失败)
+			else if($result["trade_state"] == "PAYERROR"){
+				$succCode = 0;
+				return false;
+			}
+			//已撤销（刷卡支付）
+			else if($result["trade_state"] == "REVOKED"){
+				$succCode = 0;
+				return false;
+			}
+			//未支付
+			else if($result["trade_state"] == "NOTPAY"){
+				$succCode = 0;
+				return false;
+			}
+
 		}
 		
 		//如果返回错误码为“此交易订单号不存在”则直接认定失败
